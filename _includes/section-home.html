@@ -1,0 +1,56 @@
+<section id="home" class="hero is-fullheight">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <!-- Heading -->
+                <div class="column has-text-centered-touch">
+                    <h1 class="title">
+                        {{ site.author }}
+                    </h1>
+                    <h2 class="subtitle mt-3">
+                        <span id="typewriter-text"></span>
+                        <span class="typewriter-cursor">|</span>
+                    </h2>
+                    <div class="buttons mt-5">
+                        <a class="button is-medium is-primary" href="#projects">
+                            View My Work
+                        </a>
+                        <a class="button is-medium is-primary" href="#contact">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Avatar -->
+                <div class="column">
+                    <figure class="image">
+                        <img src="{{ site.author-image }}" alt="Avatar of {{ site.author }}">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function()
+    {
+        const phrase = "{{ site.author-tagline }}";
+        const element = document.getElementById("typewriter-text");
+        const typingSpeed = 100;
+
+        let characterIndex = 0;
+
+        function type()
+        {
+            if (characterIndex < phrase.length)
+            {
+                element.innerHTML += phrase.charAt(characterIndex);
+                ++characterIndex;
+                setTimeout(type, typingSpeed);
+            }
+        }
+
+        setTimeout(type, typingSpeed);
+    });
+</script>

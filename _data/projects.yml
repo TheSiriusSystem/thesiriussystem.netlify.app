@@ -1,0 +1,4 @@
+- title: KoboldAI Frontend
+  image: /assets/images/portfolio/koboldai-frontend-thumbnail.jpg
+  description: A simple frontend for KoboldCpp, a program that allows you to run language models (LMs) locally on your computer.
+  url: https://github.com/TheSiriusSystem/KoboldAI-Frontend

@@ -1,0 +1,37 @@
+<section id="testimonials" class="section">
+    <div class="container has-text-centered">
+        <!-- Heading -->
+        <h1 class="title is-size-1-desktop is-size-2-mobile">
+            Testimonials
+        </h1>
+        <h2 class="subtitle mt-2 is-italic">
+            What Clients Say About Me.
+        </h2>
+        <hr>
+
+        <!-- Testimonial Carousel -->
+        {% if site.data.testimonials.size > 0 %}
+            <div class="carousel" data-flickity='{"wrapAround": true}'>
+                {% for testimonial in site.data.testimonials %}
+                    <div class="carousel-cell box has-text-centered">
+                        <figure class="image is-inline-block is-96x96">
+                            <img class="is-rounded" src="{{ testimonial.avatar }}" alt="Avatar of {{ testimonial.name }}">
+                        </figure>
+                        <h3 class="has-text-weight-bold">
+                            {{ testimonial.name }}
+                        </h3>
+                        <h4>
+                            {{ testimonial.role }}
+                        </h4>
+                        <br>
+                        <i class="subtitle is-size-6">
+                            "{{ testimonial.quote }}"
+                        </i>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>There are currently no testimonials to read!</p>
+        {% endif %}
+    </div>
+</section>

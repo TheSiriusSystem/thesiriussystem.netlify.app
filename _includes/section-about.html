@@ -1,0 +1,67 @@
+<section id="about" class="section">
+    <div class="container">
+        <div class="columns is-vcentered">
+            <!-- About Me Column -->
+            <div class="column has-text-centered-touch">
+                <!-- Heading -->
+                <h1 class="title is-size-1-desktop is-size-2-mobile">
+                    About Me
+                </h1>
+                <h2 class="subtitle mt-2 is-italic">
+                    Meet The Human Behind The Screen.
+                </h2>
+                <hr>
+
+                <!-- Author Information -->
+                <p>
+                    {{ site.author-about }}
+                </p>
+                <a class="button mt-5 is-primary" href="{{ site.author-cv }}" download>
+                    Download My CV
+                </a>
+            </div>
+
+            <!-- Cards Column -->
+            <div class="column">
+                <div class="columns is-multiline is-mobile cards-wrapper">
+                    {% for card in site.data.about-cards %}
+                        <div class="column has-text-centered">
+                            <div class="box">
+                                <figure class="image">
+                                    <img class="is-rounded" src="{{ card.icon }}" alt="{{ card.title }} Icon">
+                                </figure>
+                                <h3 class="title mt-5">
+                                    {{ card.title }}
+                                </h3>
+                                <p class="mt-2">
+                                    {{ card.description }}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function()
+    {
+        const cards = document.querySelectorAll("#about .cards-wrapper .box");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting)
+                {
+                    entry.target.classList.add("fade-in-up");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        cards.forEach(card => observer.observe(card));
+    });
+</script>

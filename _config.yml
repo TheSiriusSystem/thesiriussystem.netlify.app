@@ -1,0 +1,15 @@
+title: Wasik Farhan Roopkotha
+description: Explore the portfolio of Wasik Farhan Roopkotha, a talented artist and designer.
+favicon: /assets/images/favicon.png
+logo: /assets/images/logo.png
+author: Wasik Farhan Roopkotha
+author-tagline: Software Engineer & Graphic Designer
+author-image: /assets/images/avatar.png
+author-about: Hello! I’m Roopkotha, a self-taught software engineer and aspiring graphic designer who thrives at the intersection of logic and creativity. My journey has been fueled by curiosity and a drive to build things that are both functional and visually striking.
+author-cv: /assets/downloads/Wasik_Farhan_Roopkotha_CV.pdf
+
+permalink: "news/:title"
+
+# Build settings
+plugins:
+  - jekyll-feed

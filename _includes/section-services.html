@@ -1,0 +1,90 @@
+<section id="services" class="section">
+    <div class="container has-text-centered">
+        <!-- Heading -->
+        <h1 class="title is-size-1-desktop is-size-2-mobile">
+            Services
+        </h1>
+        <h2 class="subtitle mt-2 is-italic">
+            What I Can Do for You.
+        </h2>
+        <hr>
+
+        <!-- Service Card Grid -->
+        {% if site.data.services.size > 0 %}
+            <div class="columns is-multiline is-mobile">
+                {% for service in site.data.services %}
+                    <div class="column is-one-third">
+                        <div class="service-card">
+                            <!-- Front Face -->
+                            <div class="card-face front">
+                                <figure class="image mb-4 is-96x96">
+                                    <img src="{{ service.icon }}" alt="{{ service.title }} Icon">
+                                </figure>
+                                <h3 class="title is-size-4">
+                                    {{ service.title }}
+                                </h3>
+                            </div>
+
+                            <!-- Back Face -->
+                            <div class="card-face back">
+                                <h3 class="title is-size-5 has-text-weight-bold mb-2">
+                                    {{ service.title }}
+                                </h3>
+                                <p class="px-3">
+                                    {{ service.description }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No services listed!</p>
+        {% endif %}
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function()
+    {
+        const cards = document.querySelectorAll("#services .columns .service-card");
+        const isMobile = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+        if (!isMobile)
+        {
+            cards.forEach(card => {
+                card.addEventListener("mouseenter", function()
+                {
+                    this.classList.toggle("is-flipped");
+                });
+
+                card.addEventListener("mouseleave", function()
+                {
+                    this.classList.toggle("is-flipped");
+                });
+            });
+        } else
+        {
+            cards.forEach(card => {
+                card.addEventListener("click", function()
+                {
+                    this.classList.toggle("is-flipped");
+                });
+            });
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting)
+                {
+                    entry.target.classList.add("fade-in-up");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        cards.forEach(card => observer.observe(card));
+    });
+</script>

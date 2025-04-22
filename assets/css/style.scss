@@ -1,0 +1,308 @@
+---
+---
+$breakpoint-mobile: 768px;
+$hr-color: #4a4a4a;
+
+@use "main";
+
+#home
+{
+    &::before
+    {
+        position: absolute;
+        inset: 0;
+        background-position: top;
+        background-size: cover;
+        background-image: linear-gradient(rgba(191, 191, 191, 0.5), rgba(169, 169, 169, 0.3)), url("/assets/images/hero-image.jpg");
+        background-repeat: no-repeat;
+        content: "";
+    }
+
+    h1
+    {
+        font-size: 72px;
+
+        @media screen and (max-width: $breakpoint-mobile)
+        {
+            font-size: 48px;
+        }
+    }
+
+    h2
+    {
+        font-size: 30px;
+
+        @media screen and (max-width: $breakpoint-mobile)
+        {
+            font-size: 21px;
+        }
+    }
+
+    .typewriter-cursor
+    {
+        animation: typewriter-cursor-blink 1s infinite;
+    }
+
+    .buttons
+    {
+        @media screen and (max-width: $breakpoint-mobile)
+        {
+            justify-content: center;
+        }
+    }
+
+    img
+    {
+        max-width: 600px;
+        margin: 0 auto;
+        transition: transform 0.3s ease;
+
+        &:hover
+        {
+            transform: scale(1.075);
+        }
+
+        @media screen and (max-width: $breakpoint-mobile)
+        {
+            max-width: 450px;
+        }
+    }
+
+    @keyframes typewriter-cursor-blink
+    {
+        0%, 100% { opacity: 1.0; }
+        50% { opacity: 0.0; }
+    }
+}
+
+#about
+{
+    background-color: #caf0f8;
+
+    hr
+    {
+        background-color: $hr-color;
+    }
+
+    .cards-wrapper
+    {
+        gap: 2.0rem;
+
+        .column
+        {
+            display: flex;
+            flex-direction: column;
+
+            .box
+            {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1.0; // Makes all boxes stretch to match the height of the tallest box.
+                justify-content: space-between;
+                transform: translateY(-30px);
+                background-color: #e5e4e2;
+                opacity: 0.0;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+                img
+                {
+                    border: 4px solid #4a4a4a;
+                    transition: transform 0.3s ease;
+
+                    &:hover
+                    {
+                        transform: translateY(-12px);
+                    }
+                }
+            }
+
+            .fade-in-up
+            {
+                opacity: 1.0;
+                transform: translateY(0px);
+            }
+        }
+    }
+}
+
+#skills, #services, #testimonials
+{
+    .container
+    {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    hr
+    {
+        background-color: $hr-color;
+    }
+}
+
+#skills
+{
+    background-color: #90e0ef;
+
+    .columns
+    {
+        justify-content: center;
+
+        .column
+        {
+            display: flex;
+            flex-direction: column;
+
+            .box
+            {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1.0; // Makes all boxes stretch to match the height of the tallest box.
+                justify-content: space-between;
+                align-items: center;
+                transform: rotateY(90deg);
+                perspective: 1000px;
+                background-color: #6db3d0;
+                color: #caf0f8;
+                opacity: 0.0;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transform-style: preserve-3d;
+                transition: transform 0.8s ease-out, opacity 0.6s ease-out, box-shadow 0.8s ease-out;
+
+                &:hover
+                {
+                    transform: translateY(-20px) rotateY(0deg);
+                    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+                    transition: transform 0.6s ease-out, opacity 0.6s ease-out, box-shadow 0.6s ease-out;
+                }
+
+                h3
+                {
+                    color: #caf0f8;
+                }
+            }
+
+            .flip-in
+            {
+                transform: rotateY(0deg);
+                opacity: 1.0;
+            }
+        }
+    }
+}
+
+#services
+{
+    background-color: #48cae4;
+
+    .columns
+    {
+        justify-content: center;
+
+        .column
+        {
+            display: flex;
+            justify-content: center;
+
+            .service-card
+            {
+                position: relative;
+                perspective: 1000px;
+                width: 100%;
+                max-width: 300px;
+                height: 350px;
+                margin: 1.0rem 0;
+                opacity: 0.0;
+
+                .card-face
+                {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    padding: 2.0rem 1.0rem;
+                    border-radius: 8px;
+                    backface-visibility: hidden;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    transition: transform 0.6s ease
+                }
+
+                .front
+                {
+                    background-color: #6dd4e8;
+                    color: #3a7ba7;
+
+                    h3
+                    {
+                        color: #3a7ba7;
+                    }
+                }
+
+                .back
+                {
+                    background-color: #41c7e1;
+                    color: #3a7ba7;
+                    transform: rotateY(180deg);
+                    text-align: center;
+
+                    h3
+                    {
+                        color: #3a7ba7;
+                    }
+                }
+
+                &.fade-in-up
+                {
+                    animation: fade-in-up 0.8s ease forwards;
+                }
+
+                &.is-flipped
+                {
+                    .front
+                    {
+                        transform: rotateY(180deg);
+                    }
+
+                    .back
+                    {
+                        transform: rotateY(360deg);
+                    }
+                }
+
+                @keyframes fade-in-up
+                {
+                    0%
+                    {
+                        transform: translateY(-30px);
+                        opacity: 0.0;
+                    }
+                    100%
+                    {
+                        transform: translateY(0px);
+                        opacity: 1.0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#testimonials
+{
+    background-color: #f5f5f5;
+
+    .carousel-cell {
+        width: 100%; // Force the cell to fill the width of the section.
+    }
+
+    .carousel-cell.box {
+        background-color: #eaf4fa;
+        border: 2px solid #a9d6e5;
+        border-radius: 8px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
