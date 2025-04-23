@@ -5,6 +5,16 @@ $hr-color-dark: #fff;
 
 @use "main" as main;
 
+// For sections that need to be less wide than others.
+#skills, #services, #testimonials
+{
+    .container
+    {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+}
+
 #home
 {
     &::before
@@ -102,15 +112,15 @@ $hr-color-dark: #fff;
 
             .box
             {
-                display: flex;
-                flex-direction: column;
-                flex-grow: 1.0; // Makes all boxes stretch to match the height of the tallest box.
-                justify-content: space-between;
                 transform: translateY(-30px);
                 background-color: #ffddd2;
                 opacity: 0.0;
                 box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
-                transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+                transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1.0; // Makes all boxes stretch to match the height of the tallest box.
+                justify-content: space-between;
 
                 img
                 {
@@ -126,25 +136,16 @@ $hr-color-dark: #fff;
 
                 p
                 {
-                    color: main.$text-color-light; // Main stylesheet failed to catch this one for some reason.
+                    color: main.$text-color-light; // Main stylesheet failed to catch this element for some reason.
                 }
             }
 
             .fade-in
             {
-                opacity: 1.0;
                 transform: translateY(0px);
+                opacity: 1.0;
             }
         }
-    }
-}
-
-#skills, #services, #testimonials
-{
-    .container
-    {
-        max-width: 1000px;
-        margin: 0 auto;
     }
 }
 
@@ -168,11 +169,6 @@ $hr-color-dark: #fff;
 
             .box
             {
-                display: flex;
-                flex-direction: column;
-                flex-grow: 1.0; // Makes all boxes stretch to match the height of the tallest box.
-                justify-content: space-between;
-                align-items: center;
                 transform: rotateY(90deg);
                 perspective: 1000px;
                 background-color: #6db3d0;
@@ -181,6 +177,11 @@ $hr-color-dark: #fff;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                 transform-style: preserve-3d;
                 transition: transform 0.8s ease-out, opacity 0.6s ease-out, box-shadow 0.8s ease-out;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1.0; // Makes all boxes stretch to match the height of the tallest box.
+                justify-content: space-between;
+                align-items: center;
 
                 &:hover
                 {
@@ -422,6 +423,16 @@ $hr-color-dark: #fff;
         background-color: #f0f8ff;
         border: 2px solid #0096c7;
         border-radius: 8px;
+
+        h3, h4
+        {
+            color: main.$text-color-light;
+        }
+
+        i
+        {
+            color: main.$text-color-light;
+        }
     }
 }
 
@@ -429,7 +440,7 @@ $hr-color-dark: #fff;
 {
     background-color: #023e8a;
 
-    h1, h2
+    h1, h2, h3, p
     {
         color: main.$text-color-dark;
     }
@@ -437,5 +448,39 @@ $hr-color-dark: #fff;
     hr
     {
         background-color: $hr-color-dark;
+    }
+
+    .connect-card
+    {
+        display: block;
+        padding: 1.5rem;
+        height: 100%;
+        border-radius: 0.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 2px solid rgba(0, 119, 182, 0.2);
+
+        &:hover
+        {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 119, 182, 0.1);
+        }
+
+        .connect-inner
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            figure
+            {
+                margin: 0 auto;
+            }
+        }
+
+        @media screen and (max-width: main.$breakpoint-mobile)
+        {
+            padding: 1rem;
+        }
     }
 }
