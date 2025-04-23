@@ -58,6 +58,15 @@ body
             display: inline;
         }
     }
+
+    // Intended for button containers. Use this class alongside Bulma's is-mobile class.
+    .buttons-wrapper
+    {
+        @media screen and (max-width: $breakpoint-touch)
+        {
+            justify-content: center;
+        }
+    }
 }
 
 ::placeholder
