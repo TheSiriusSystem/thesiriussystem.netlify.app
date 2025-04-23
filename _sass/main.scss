@@ -49,6 +49,7 @@ body
         letter-spacing: -0.05rem;
     }
 
+    // Makes it so that the element only displays on mobile devices.
     .mobile-only
     {
         display: none;
