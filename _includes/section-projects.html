@@ -1,25 +1,33 @@
 <section id="projects" class="section">
-    <div class="container">
-        <h2 class="title is-3 has-text-centered">Projects</h2>
-        <div class="columns is-multiline">
-            {% for project in site.data.projects %}
-                <div class="column is-one-third">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="{{ project.image }}" alt="{{ project.title }}">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-4">{{ project.title }}</p>
-                            <p class="subtitle is-6">{{ project.description }}</p>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="{{ project.url }}" class="card-footer-item" target="_blank">View Project</a>
-                        </footer>
+    <div class="container has-text-centered">
+        <!-- Heading -->
+        <h1 class="title is-size-1-desktop is-size-2-mobile">
+            Projects
+        </h1>
+        <h2 class="subtitle is-size-5-desktop is-size-6-mobile mt-2 ls-1 is-italic">
+            A Collage Of My Works.
+        </h2>
+        <hr>
+
+        <!-- Project Grid -->
+        {% if site.data.projects.size > 0 %}
+            <div class="columns is-multiline is-mobile">
+                {% for project in site.data.projects %}
+                    <div class="column is-one-third">
+                        <a class="project-card" href="{{ project.url }}" target="_blank">
+                            <div class="image-wrapper">
+                                <img src="{{ project.image }}" alt="{{ project.title }} Preview">
+                                <div class="overlay">
+                                    <h3 class="title mb-1">{{ project.title }}</h3>
+                                    <p class="is-italic">{{ project.category }}</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No projects yet!</p>
+        {% endif %}
     </div>
 </section>
