@@ -4,33 +4,36 @@
         <h1 class="title is-size-1-desktop is-size-2-mobile">
             Services
         </h1>
-        <h2 class="subtitle mt-2 is-italic">
-            What I Can Do for You.
+        <h2 class="subtitle mt-2 is-size-5-desktop is-size-6-mobile ls-1 is-italic">
+            What I Can Do For You.
         </h2>
         <hr>
 
         <!-- Service Card Grid -->
         {% if site.data.services.size > 0 %}
+            <p class="mobile-only">
+                Tap on a service card to learn more.
+            </p>
             <div class="columns is-multiline is-mobile">
                 {% for service in site.data.services %}
-                    <div class="column is-one-third">
+                    <div class="column is-one-third-desktop is-half-mobile">
                         <div class="service-card">
                             <!-- Front Face -->
                             <div class="card-face front">
                                 <figure class="image mb-4 is-96x96">
                                     <img src="{{ service.icon }}" alt="{{ service.title }} Icon">
                                 </figure>
-                                <h3 class="title is-size-4">
+                                <h3 class="title is-size-4-desktop is-size-6-mobile">
                                     {{ service.title }}
                                 </h3>
                             </div>
 
                             <!-- Back Face -->
                             <div class="card-face back">
-                                <h3 class="title is-size-5 has-text-weight-bold mb-2">
+                                <h3 class="title mb-2 is-size-5-desktop is-size-6-mobile has-text-weight-bold">
                                     {{ service.title }}
                                 </h3>
-                                <p class="px-3">
+                                <p class="is-size-5-desktop is-size-6-mobile">
                                     {{ service.description }}
                                 </p>
                             </div>
@@ -50,26 +53,22 @@
         const cards = document.querySelectorAll("#services .columns .service-card");
         const isMobile = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
+        function toggleFlip()
+        {
+            this.classList.toggle("is-flipped");
+        }
+
         if (!isMobile)
         {
             cards.forEach(card => {
-                card.addEventListener("mouseenter", function()
-                {
-                    this.classList.toggle("is-flipped");
-                });
-
-                card.addEventListener("mouseleave", function()
-                {
-                    this.classList.toggle("is-flipped");
-                });
+                card.addEventListener("mouseenter", toggleFlip);
+                card.addEventListener("mouseleave", toggleFlip);
             });
         } else
         {
             cards.forEach(card => {
-                card.addEventListener("click", function()
-                {
-                    this.classList.toggle("is-flipped");
-                });
+                card.classList.add("is-clickable");
+                card.addEventListener("click", toggleFlip);
             });
         }
 
