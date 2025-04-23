@@ -1,13 +1,13 @@
 <section id="about" class="section">
     <div class="container">
         <div class="columns is-vcentered">
-            <!-- About Me Column -->
+            <!-- Heading Column -->
             <div class="column has-text-centered-touch">
                 <!-- Heading -->
                 <h1 class="title is-size-1-desktop is-size-2-mobile">
                     About Me
                 </h1>
-                <h2 class="subtitle mt-2 is-italic">
+                <h2 class="subtitle mt-2 is-size-5-desktop is-size-6-mobile ls-1 is-italic">
                     Meet The Human Behind The Screen.
                 </h2>
                 <hr>
@@ -16,21 +16,21 @@
                 <p>
                     {{ site.author-about }}
                 </p>
-                <a class="button mt-5 is-primary" href="{{ site.author-cv }}" download>
+                <a class="button mt-5" href="{{ site.author-cv }}" download>
                     Download My CV
                 </a>
             </div>
 
             <!-- Cards Column -->
             <div class="column">
-                <div class="columns is-multiline is-mobile cards-wrapper">
+                <div class="columns cards-wrapper">
                     {% for card in site.data.about-cards %}
                         <div class="column has-text-centered">
                             <div class="box">
                                 <figure class="image">
                                     <img class="is-rounded" src="{{ card.icon }}" alt="{{ card.title }} Icon">
                                 </figure>
-                                <h3 class="title mt-5">
+                                <h3 class="title mt-5 is-size-3-desktop is-size-4-tablet">
                                     {{ card.title }}
                                 </h3>
                                 <p class="mt-2">
@@ -54,7 +54,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting)
                 {
-                    entry.target.classList.add("fade-in-up");
+                    entry.target.classList.add("fade-in");
                     observer.unobserve(entry.target);
                 }
             });
