@@ -1,9 +1,9 @@
 ---
 ---
-$breakpoint-mobile: 768px;
-$hr-color: #4a4a4a;
+$hr-color-light: #4a4a4a;
+$hr-color-dark: #fff;
 
-@use "main";
+@use "main" as main;
 
 #home
 {
@@ -22,7 +22,7 @@ $hr-color: #4a4a4a;
     {
         font-size: 72px;
 
-        @media screen and (max-width: $breakpoint-mobile)
+        @media screen and (max-width: main.$breakpoint-touch)
         {
             font-size: 48px;
         }
@@ -32,7 +32,7 @@ $hr-color: #4a4a4a;
     {
         font-size: 30px;
 
-        @media screen and (max-width: $breakpoint-mobile)
+        @media screen and (max-width: main.$breakpoint-touch)
         {
             font-size: 21px;
         }
@@ -40,12 +40,13 @@ $hr-color: #4a4a4a;
 
     .typewriter-cursor
     {
+        color: #fff;
         animation: typewriter-cursor-blink 1s infinite;
     }
 
     .buttons
     {
-        @media screen and (max-width: $breakpoint-mobile)
+        @media screen and (max-width: main.$breakpoint-touch)
         {
             justify-content: center;
         }
@@ -62,16 +63,22 @@ $hr-color: #4a4a4a;
             transform: scale(1.075);
         }
 
-        @media screen and (max-width: $breakpoint-mobile)
+        @media screen and (max-width: main.$breakpoint-touch)
         {
-            max-width: 450px;
+            max-width: 300px;
         }
     }
 
     @keyframes typewriter-cursor-blink
     {
-        0%, 100% { opacity: 1.0; }
-        50% { opacity: 0.0; }
+        0%, 100%
+        {
+            opacity: 1.0;
+        }
+        50%
+        {
+            opacity: 0.0;
+        }
     }
 }
 
@@ -81,7 +88,7 @@ $hr-color: #4a4a4a;
 
     hr
     {
-        background-color: $hr-color;
+        background-color: $hr-color-light;
     }
 
     .cards-wrapper
@@ -100,14 +107,15 @@ $hr-color: #4a4a4a;
                 flex-grow: 1.0; // Makes all boxes stretch to match the height of the tallest box.
                 justify-content: space-between;
                 transform: translateY(-30px);
-                background-color: #e5e4e2;
+                background-color: #ffddd2;
                 opacity: 0.0;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
                 transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 
                 img
                 {
-                    border: 4px solid #4a4a4a;
+                    border: 4px solid #343434;
+                    box-shadow: 0 0 8px rgba(0, 0, 0, 1.0);
                     transition: transform 0.3s ease;
 
                     &:hover
@@ -115,9 +123,14 @@ $hr-color: #4a4a4a;
                         transform: translateY(-12px);
                     }
                 }
+
+                p
+                {
+                    color: main.$text-color-light; // Main stylesheet failed to catch this one for some reason.
+                }
             }
 
-            .fade-in-up
+            .fade-in
             {
                 opacity: 1.0;
                 transform: translateY(0px);
@@ -133,16 +146,16 @@ $hr-color: #4a4a4a;
         max-width: 1000px;
         margin: 0 auto;
     }
-
-    hr
-    {
-        background-color: $hr-color;
-    }
 }
 
 #skills
 {
     background-color: #90e0ef;
+
+    hr
+    {
+        background-color: $hr-color-light;
+    }
 
     .columns
     {
@@ -195,6 +208,11 @@ $hr-color: #4a4a4a;
 {
     background-color: #48cae4;
 
+    hr
+    {
+        background-color: $hr-color-light;
+    }
+
     .columns
     {
         justify-content: center;
@@ -232,25 +250,40 @@ $hr-color: #4a4a4a;
 
                 .front
                 {
-                    background-color: #6dd4e8;
-                    color: #3a7ba7;
+                    background-color: #b3e0f2;
+                    color: #1a5d8a;
 
                     h3
                     {
-                        color: #3a7ba7;
+                        color: #1a5d8a;
                     }
                 }
 
                 .back
                 {
-                    background-color: #41c7e1;
-                    color: #3a7ba7;
+                    background-color: #87c8e0;
+                    color: #1a5d8a;
                     transform: rotateY(180deg);
                     text-align: center;
 
                     h3
                     {
-                        color: #3a7ba7;
+                        color: #1a5d8a;
+
+                        @media screen and (max-width: main.$breakpoint-mobile)
+                        {
+                            display: none;
+                        }
+                    }
+
+                    p
+                    {
+                        padding: 0 0.75rem;
+
+                        @media screen and (max-width: main.$breakpoint-mobile)
+                        {
+                            padding: 0;
+                        }
                     }
                 }
 
@@ -290,19 +323,119 @@ $hr-color: #4a4a4a;
     }
 }
 
-#testimonials
+#projects
 {
     background-color: #f5f5f5;
 
-    .carousel-cell {
+    hr
+    {
+        background-color: $hr-color-light;
+    }
+
+    .project-card
+    {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        .image-wrapper
+        {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 75%; // 4:3 aspect ratio
+            overflow: hidden;
+
+            img
+            {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.4s ease;
+            }
+
+            .overlay
+            {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.6);
+                color: white;
+                opacity: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: opacity 0.3s ease;
+                padding: 1rem;
+                text-align: center;
+            }
+        }
+
+        &:hover
+        {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+
+            .overlay
+            {
+                opacity: 1;
+            }
+
+            img
+            {
+                transform: scale(1.05);
+            }
+        }
+    }
+}
+
+#testimonials
+{
+    background-color: #0077b6;
+
+    h1, h2
+    {
+        color: main.$text-color-dark;
+    }
+
+    hr
+    {
+        background-color: $hr-color-dark;
+    }
+
+    .carousel-cell
+    {
         width: 100%; // Force the cell to fill the width of the section.
     }
 
-    .carousel-cell.box {
-        background-color: #eaf4fa;
-        border: 2px solid #a9d6e5;
+    .carousel-cell.box
+    {
+        background-color: #f0f8ff;
+        border: 2px solid #0096c7;
         border-radius: 8px;
-        margin-left: 20px;
-        margin-right: 20px;
+    }
+}
+
+#contact
+{
+    background-color: #023e8a;
+
+    h1, h2
+    {
+        color: main.$text-color-dark;
+    }
+
+    hr
+    {
+        background-color: $hr-color-dark;
     }
 }
