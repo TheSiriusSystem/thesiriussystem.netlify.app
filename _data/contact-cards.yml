@@ -1,0 +1,19 @@
+- name: Facebook
+  handle: "@wasikfarhan.roopkotha"
+  url: https://www.facebook.com/wasikfarhan.roopkotha/
+  icon: /assets/images/icons/socials/facebook.svg
+
+- name: YouTube
+  handle: "@sirius_pi_314"
+  url: https://www.youtube.com/@sirius_pi_314
+  icon: /assets/images/icons/socials/youtube.svg
+
+- name: X
+  handle: "@TheSiriusSystem"
+  url: https://x.com/TheSiriusSystem
+  icon: /assets/images/icons/socials/twitter.svg
+
+- name: GitHub
+  handle: "@TheSiriusSystem"
+  url: https://dribbble.com/yourhandle
+  icon: /assets/images/icons/socials/github.svg
