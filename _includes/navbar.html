@@ -1,59 +1,86 @@
-<!-- _includes/navbar.html -->
-<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="{{ '/' | relative_url }}">
-        <strong>My Portfolio</strong>
-      </a>
-  
-      <!-- Hamburger menu for mobile -->
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-  
-    <div id="navMenu" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="{{ '/' | relative_url }}">
-          Home
-        </a>
-        <a class="navbar-item" href="{{ '/about' | relative_url }}">
-          About
-        </a>
-        <a class="navbar-item" href="{{ '/projects' | relative_url }}">
-          Projects
-        </a>
-        <a class="navbar-item" href="{{ '/contact' | relative_url }}">
-          Contact
-        </a>
-      </div>
-  
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <!-- Placeholder for dark/light mode toggle -->
-          <button class="button is-small is-light" id="toggle-theme">🌓</button>
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="{{ site.logo }}" alt="{{ site.title }}">
+            </a>
+
+            <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="main-navbar">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
-      </div>
+
+        <div id="main-navbar" class="navbar-menu">
+            <div class="navbar-end has-text-weight-bold">
+                <a class="navbar-item" href="#home">
+                    Home
+                </a>
+                <a class="navbar-item" href="#about">
+                    About
+                </a>
+                <a class="navbar-item" href="#skills">
+                    Skills
+                </a>
+                <a class="navbar-item" href="#services">
+                    Services
+                </a>
+                <a class="navbar-item" href="#projects">
+                    Projects
+                </a>
+                <a class="navbar-item" href="#testimonials">
+                    Testimonials
+                </a>
+                <a class="navbar-item" href="#contact">
+                    Contact
+                </a>
+            </div>
+        </div>
     </div>
-  </nav>
-  
-  <script>
-    // Mobile menu toggle
-    document.addEventListener('DOMContentLoaded', () => {
-      const burger = document.querySelector('.navbar-burger');
-      const menu = document.getElementById('navMenu');
-  
-      burger.addEventListener('click', () => {
-        burger.classList.toggle('is-active');
-        menu.classList.toggle('is-active');
-      });
-  
-      // Optional: dark mode toggle (needs CSS logic or class switch)
-      const toggleTheme = document.getElementById('toggle-theme');
-      toggleTheme.addEventListener('click', () => {
-        document.documentElement.classList.toggle('dark-mode');
-      });
+</nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function()
+    {
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll(".navbar-burger"), 0);
+
+        if ($navbarBurgers.length > 0)
+        {
+            $navbarBurgers.forEach(element => {
+                element.addEventListener("click", function()
+                {
+                    const target = element.dataset.target;
+                    const $target = document.getElementById(target);
+
+                    element.classList.toggle("is-active");
+                    $target.classList.toggle("is-active");
+                });
+            });
+        }
     });
-  </script>
-  
+
+    document.addEventListener("scroll", function()
+    {
+        const sections = document.querySelectorAll("section");
+        const navItems = document.querySelectorAll(".navbar-item");
+
+        let current = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (scrollY >= sectionTop - 60)
+            {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navItems.forEach(item => {
+            item.classList.remove("is-active");
+            if (item.getAttribute("href") === `#${current}`)
+            {
+                item.classList.add("is-active");
+            }
+        });
+    });
+</script>
