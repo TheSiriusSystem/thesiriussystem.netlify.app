@@ -1,0 +1,48 @@
+<section class="section" id="contact">
+    <div class="container has-text-centered">
+        <!-- Heading -->
+        <h1 class="title is-size-1-desktop is-size-2-mobile">
+            Let's Get In Touch!
+        </h1>
+        <h2 class="subtitle mt-2 ls-1 is-italic">
+            Your Next Idea Starts Here.
+        </h2>
+        <hr>
+
+        <div class="columns is-centered">
+            <div class="column is-8-desktop">
+                <p class="mb-5 is-size-5-desktop is-size-6-mobile">
+                    I'm always interested in discussing new projects, creative ideas, or opportunities to be part of your vision.
+                </p>
+            </div>
+        </div>
+
+        <div class="columns is-multiline is-mobile is-centered">
+            {% for platform in site.data.contact-cards %}
+                <div class="column is-one-quarter-desktop is-half-mobile">
+                    <a href="{{ platform.url }}" target="_blank" class="connect-card" aria-label="{{ platform.name }}">
+                        <div class="connect-inner">
+                            <figure class="image mb-3 is-64x64">
+                                <img src="{{ platform.icon }}" alt="{{ platform.name }} Icon">
+                            </figure>
+                            <h3 class="title is-size-5-desktop is-size-6-mobile">
+                                {{ platform.name }}
+                            </h3>
+                            <p class="is-size-6-desktop is-size-7-mobile">
+                                {{ platform.handle }}
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="columns is-centered mt-6">
+            <div class="column is-6-desktop">
+                <a class="button is-medium is-fullwidth" href="mailto:{{ site.author-email }}">
+                    Email Me Directly
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
