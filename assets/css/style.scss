@@ -464,6 +464,11 @@ $hr-color-dark: #fff;
         {
             background-color: #dee2ff;
 
+            label
+            {
+                color: main.$text-color-light;
+            }
+
             input, textarea
             {
                 background-color: #fafafa;
