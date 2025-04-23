@@ -4,14 +4,14 @@
         <h1 class="title is-size-1-desktop is-size-2-mobile">
             Testimonials
         </h1>
-        <h2 class="subtitle mt-2 ls-1 is-italic">
+        <h2 class="subtitle mt-2 is-size-5-desktop is-size-6-mobile ls-1 is-italic">
             What Clients Say About Me.
         </h2>
         <hr>
 
         <!-- Testimonial Carousel -->
         {% if site.data.testimonials.size > 0 %}
-            <div class="carousel" data-flickity='{"wrapAround": true}'>
+            <div class="carousel" data-flickity='{"wrapAround": true, "autoPlay": 5000}'>
                 {% for testimonial in site.data.testimonials %}
                     <div class="carousel-cell box has-text-centered">
                         <figure class="image is-inline-block is-96x96">
@@ -24,14 +24,14 @@
                             {{ testimonial.role }}
                         </h4>
                         <br>
-                        <i class="is-size-6">
-                            "{{ testimonial.quote }}"
-                        </i>
+                        <blockquote class="is-size-6">
+                            <p>"{{ testimonial.quote }}"</p>
+                        </blockquote>
                     </div>
                 {% endfor %}
             </div>
         {% else %}
-            <p>There are currently no testimonials to read!</p>
+            <p>No testimonials yet!</p>
         {% endif %}
     </div>
 </section>

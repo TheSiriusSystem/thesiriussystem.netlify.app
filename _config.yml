@@ -4,10 +4,13 @@ favicon: /assets/images/favicon.png
 logo: /assets/images/logo.png
 author: Wasik Farhan Roopkotha
 author-email: mythology06@gmail.com
+author-whatsapp: 8801334182900
 author-tagline: Software Engineer & Graphic Designer
 author-image: /assets/images/avatar.png
 author-about: Hello! I’m Roopkotha, a self-taught software engineer and aspiring graphic designer who thrives at the intersection of logic and creativity. My journey has been fueled by curiosity and a drive to build things that are both functional and visually striking.
 author-cv: /assets/downloads/Wasik_Farhan_Roopkotha_CV.pdf
+author-footer-tagline: Creating Designs That Stand Out.
+author-footer-about: I'm a software engineer and graphic designer blending logic with creativity to build sleek, functional projects. I specialize in Godot development.
 
 permalink: "news/:title"
 

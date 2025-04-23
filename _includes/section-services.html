@@ -11,29 +11,31 @@
 
         <!-- Service Card Grid -->
         {% if site.data.services.size > 0 %}
-            <p class="mobile-only">
+            <!-- For mobile users who want to see service information. -->
+            <p class="touch-only has-text-weight-medium">
                 Tap on a service card to learn more.
             </p>
+
             <div class="columns is-multiline is-mobile">
                 {% for service in site.data.services %}
-                    <div class="column is-one-third-desktop is-half-mobile">
+                    <div class="column is-4-desktop is-4-tablet is-6-mobile">
                         <div class="service-card">
                             <!-- Front Face -->
                             <div class="card-face front">
                                 <figure class="image mb-4 is-96x96">
-                                    <img src="{{ service.icon }}" alt="{{ service.title }} Icon">
+                                    <img src="{{ service.icon }}" alt="{{ service.name }} Icon">
                                 </figure>
-                                <h3 class="title is-size-4-desktop is-size-6-mobile">
-                                    {{ service.title }}
+                                <h3 class="title is-size-4-desktop is-size-4-tablet is-size-6-mobile">
+                                    {{ service.name }}
                                 </h3>
                             </div>
 
                             <!-- Back Face -->
                             <div class="card-face back">
-                                <h3 class="title mb-2 is-size-5-desktop is-size-6-mobile has-text-weight-bold">
-                                    {{ service.title }}
+                                <h3 class="title mb-2 is-size-5-desktop is-size-6-touch has-text-weight-bold">
+                                    {{ service.name }}
                                 </h3>
-                                <p class="is-size-5-desktop is-size-6-mobile">
+                                <p class="is-size-5-desktop is-size-6-touch">
                                     {{ service.description }}
                                 </p>
                             </div>
@@ -42,7 +44,7 @@
                 {% endfor %}
             </div>
         {% else %}
-            <p>No services listed!</p>
+            <p>No services are offered at the moment!</p>
         {% endif %}
     </div>
 </section>
@@ -76,7 +78,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting)
                 {
-                    entry.target.classList.add("fade-in-up");
+                    entry.target.classList.add("fade-in");
                     observer.unobserve(entry.target);
                 }
             });

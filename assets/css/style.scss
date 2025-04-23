@@ -5,6 +5,36 @@ $hr-color-dark: #fff;
 
 @use "main" as main;
 
+@mixin home-responsive-font-size($base-size, $mobile-size)
+{
+    font-size: $base-size;
+
+    @media screen and (max-width: main.$breakpoint-touch)
+    {
+        font-size: $mobile-size;
+    }
+}
+
+@mixin flex-column()
+{
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin stretch-box()
+{
+    @include flex-column();
+    flex-grow: 1.0; // Makes all boxes stretch to match the height of the tallest box.
+    justify-content: space-between;
+}
+
+@mixin flex-column-center()
+{
+    @include flex-column();
+    justify-content: center;
+    align-items: center;
+}
+
 // For sections that need to be less wide than others.
 #skills, #services, #testimonials
 {
@@ -30,36 +60,18 @@ $hr-color-dark: #fff;
 
     h1
     {
-        font-size: 72px;
-
-        @media screen and (max-width: main.$breakpoint-touch)
-        {
-            font-size: 48px;
-        }
+        @include home-responsive-font-size(72px, 48px);
     }
 
     h2
     {
-        font-size: 30px;
-
-        @media screen and (max-width: main.$breakpoint-touch)
-        {
-            font-size: 21px;
-        }
+        @include home-responsive-font-size(30px, 21px);
     }
 
     .typewriter-cursor
     {
         color: #fff;
         animation: typewriter-cursor-blink 1s infinite;
-    }
-
-    .buttons
-    {
-        @media screen and (max-width: main.$breakpoint-touch)
-        {
-            justify-content: center;
-        }
     }
 
     img
@@ -107,8 +119,7 @@ $hr-color-dark: #fff;
 
         .column
         {
-            display: flex;
-            flex-direction: column;
+            @include flex-column();
 
             .box
             {
@@ -117,10 +128,7 @@ $hr-color-dark: #fff;
                 opacity: 0.0;
                 box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
                 transition: transform 0.8s ease-out, opacity 0.8s ease-out;
-                display: flex;
-                flex-direction: column;
-                flex-grow: 1.0; // Makes all boxes stretch to match the height of the tallest box.
-                justify-content: space-between;
+                @include stretch-box();
 
                 img
                 {
@@ -146,6 +154,11 @@ $hr-color-dark: #fff;
                 opacity: 1.0;
             }
         }
+
+        @media screen and (max-width: main.$breakpoint-touch)
+        {
+            gap: 1.0rem;
+        }
     }
 }
 
@@ -164,8 +177,7 @@ $hr-color-dark: #fff;
 
         .column
         {
-            display: flex;
-            flex-direction: column;
+            @include flex-column();
 
             .box
             {
@@ -177,10 +189,7 @@ $hr-color-dark: #fff;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                 transform-style: preserve-3d;
                 transition: transform 0.8s ease-out, opacity 0.6s ease-out, box-shadow 0.8s ease-out;
-                display: flex;
-                flex-direction: column;
-                flex-grow: 1.0; // Makes all boxes stretch to match the height of the tallest box.
-                justify-content: space-between;
+                @include stretch-box();
                 align-items: center;
 
                 &:hover
@@ -235,10 +244,6 @@ $hr-color-dark: #fff;
 
                 .card-face
                 {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
                     position: absolute;
                     width: 100%;
                     height: 100%;
@@ -246,7 +251,8 @@ $hr-color-dark: #fff;
                     border-radius: 8px;
                     backface-visibility: hidden;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                    transition: transform 0.6s ease
+                    transition: transform 0.6s ease;
+                    @include flex-column-center();
                 }
 
                 .front
@@ -262,9 +268,9 @@ $hr-color-dark: #fff;
 
                 .back
                 {
+                    transform: rotateY(180deg);
                     background-color: #87c8e0;
                     color: #1a5d8a;
-                    transform: rotateY(180deg);
                     text-align: center;
 
                     h3
@@ -288,9 +294,9 @@ $hr-color-dark: #fff;
                     }
                 }
 
-                &.fade-in-up
+                &.fade-in
                 {
-                    animation: fade-in-up 0.8s ease forwards;
+                    animation: fade-in 0.8s ease forwards;
                 }
 
                 &.is-flipped
@@ -306,7 +312,7 @@ $hr-color-dark: #fff;
                     }
                 }
 
-                @keyframes fade-in-up
+                @keyframes fade-in
                 {
                     0%
                     {
@@ -335,28 +341,28 @@ $hr-color-dark: #fff;
 
     .project-card
     {
-        display: block;
         width: 100%;
         overflow: hidden;
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: block;
 
         .image-wrapper
         {
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 75%; // 4:3 aspect ratio
+            padding-bottom: 75%; // 4:3 aspect ratio.
             overflow: hidden;
 
             img
             {
                 position: absolute;
-                top: 0;
-                left: 0;
                 width: 100%;
                 height: 100%;
+                top: 0;
+                left: 0;
                 object-fit: cover;
                 transition: transform 0.4s ease;
             }
@@ -364,20 +370,17 @@ $hr-color-dark: #fff;
             .overlay
             {
                 position: absolute;
-                top: 0;
-                left: 0;
                 width: 100%;
                 height: 100%;
+                top: 0;
+                left: 0;
+                padding: 1.0rem;
                 background-color: rgba(0, 0, 0, 0.6);
                 color: white;
-                opacity: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: opacity 0.3s ease;
-                padding: 1rem;
                 text-align: center;
+                opacity: 0.0;
+                transition: opacity 0.3s ease;
+                @include flex-column-center();
             }
         }
 
@@ -388,7 +391,7 @@ $hr-color-dark: #fff;
 
             .overlay
             {
-                opacity: 1;
+                opacity: 1.0;
             }
 
             img
@@ -429,7 +432,7 @@ $hr-color-dark: #fff;
             color: main.$text-color-light;
         }
 
-        i
+        blockquote
         {
             color: main.$text-color-light;
         }
@@ -440,7 +443,7 @@ $hr-color-dark: #fff;
 {
     background-color: #023e8a;
 
-    h1, h2, h3, p
+    h1, h2, h3, h4, p
     {
         color: main.$text-color-dark;
     }
@@ -450,37 +453,62 @@ $hr-color-dark: #fff;
         background-color: $hr-color-dark;
     }
 
-    .connect-card
+    .columns .column
     {
-        display: block;
-        padding: 1.5rem;
-        height: 100%;
-        border-radius: 0.5rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 2px solid rgba(0, 119, 182, 0.2);
-
-        &:hover
+        .box
         {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 119, 182, 0.1);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
         }
 
-        .connect-inner
+        .box:nth-of-type(1) // Contact Form
         {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            
-            figure
+            background-color: #dee2ff;
+
+            input, textarea
             {
-                margin: 0 auto;
+                background-color: #fafafa;
+                border: 2px solid #d3d3d3;
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+                &:focus
+                {
+                    border-color: #0077b6;
+                    box-shadow: 0 0 0 2px rgba(0, 119, 182, 0.2);
+                }
+            }
+
+            textarea
+            {
+                resize: none;
             }
         }
 
+        .box:nth-of-type(2) // Social Media Buttons
+        {
+            background-color: #d4f1f9;
+
+            .button
+            {
+                figure.image
+                {
+                    transition: transform 0.3s ease;
+                }
+
+                &:hover figure.image
+                {
+                    transform: rotate(5deg) scale(1.1);
+                }
+            }
+        }
+    }
+
+    .align-text-right
+    {
+        text-align: end;
+
         @media screen and (max-width: main.$breakpoint-mobile)
         {
-            padding: 1rem;
+            text-align: center;
         }
     }
 }

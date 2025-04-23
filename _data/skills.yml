@@ -1,15 +1,15 @@
-- title: Programming Expertise
+- name: Programming Expertise
   description: Proficient in Luau (Roblox), GDScript, and Lua. Slight experience with C# (Godot).
   icon: /assets/images/icons/skills/terminal.svg
 
-- title: Problem-Solving
+- name: Problem-Solving
   description: Tackling complex challenges with creative and logical approaches.
   icon: /assets/images/icons/skills/brain.svg
 
-- title: Software Engineering
+- name: Software Engineering
   description: Developing video games and software with a focus on maintainability. Proficient in Roblox and Godot.
   icon: /assets/images/icons/skills/gear.svg
 
-- title: Digital Illustration
+- name: Digital Illustration
   description: Bringing imagination to life with vibrant artwork. Proficient in Adobe Illustrator.
   icon: /assets/images/icons/skills/paintbrush.svg

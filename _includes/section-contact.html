@@ -1,47 +1,117 @@
-<section class="section" id="contact">
-    <div class="container has-text-centered">
+<section id="contact" class="section">
+    <div class="container">
         <!-- Heading -->
-        <h1 class="title is-size-1-desktop is-size-2-mobile">
-            Let's Get In Touch!
-        </h1>
-        <h2 class="subtitle mt-2 ls-1 is-italic">
-            Your Next Idea Starts Here.
-        </h2>
+        <div class="has-text-centered">
+            <h1 class="title is-size-1-desktop is-size-2-mobile">
+                Let's Get In Touch
+            </h1>
+            <h2 class="subtitle mt-2 is-size-5-desktop is-size-6-mobile ls-1 is-italic">
+                Your Next Idea Starts Here.
+            </h2>
+        </div>
         <hr>
 
-        <div class="columns is-centered">
-            <div class="column is-8-desktop">
-                <p class="mb-5 is-size-5-desktop is-size-6-mobile">
-                    I'm always interested in discussing new projects, creative ideas, or opportunities to be part of your vision.
-                </p>
-            </div>
-        </div>
+        <div class="columns">
+            <!-- Contact Form Column -->
+            <div class="column is-5-desktop">
+                <div class="box">
+                    <form action="https://formspree.io/f/xeoojbzo" method="POST">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label" for="name">
+                                        Name*
+                                    </label>
+                                    <div class="control">
+                                        <input id="name" name="name" class="input" type="text" placeholder="Your Name" required>
+                                    </div>
+                                </div>
+                            </div>
 
-        <div class="columns is-multiline is-mobile is-centered">
-            {% for platform in site.data.contact-cards %}
-                <div class="column is-one-quarter-desktop is-half-mobile">
-                    <a href="{{ platform.url }}" target="_blank" class="connect-card" aria-label="{{ platform.name }}">
-                        <div class="connect-inner">
-                            <figure class="image mb-3 is-64x64">
-                                <img src="{{ platform.icon }}" alt="{{ platform.name }} Icon">
-                            </figure>
-                            <h3 class="title is-size-5-desktop is-size-6-mobile">
-                                {{ platform.name }}
-                            </h3>
-                            <p class="is-size-6-desktop is-size-7-mobile">
-                                {{ platform.handle }}
-                            </p>
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label" for="email">
+                                        Email*
+                                    </label>
+                                    <div class="control">
+                                        <input id="email" name="email" class="input" type="email" placeholder="Your Email" required>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
 
-        <div class="columns is-centered mt-6">
-            <div class="column is-6-desktop">
-                <a class="button is-medium is-fullwidth" href="mailto:{{ site.author-email }}">
-                    Email Me Directly
-                </a>
+                        <div class="field">
+                            <label class="label" for="email">
+                                Subject*
+                            </label>
+                            <div class="control">
+                                <input id="subject" name="subject" class="input" type="text" placeholder="Subject" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label" for="message">
+                                Message*
+                            </label>
+                            <div class="control">
+                                <textarea id="message" name="message" class="textarea" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="field is-grouped is-justify-content-center">
+                            <div class="control">
+                                <button class="button is-primary" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="columns is-multiline is-mobile buttons-wrapper-mobile">
+                    <div class="column is-6-desktop is-10-touch">
+                        <a class="button is-medium is-fullwidth" href="mailto:{{ site.author-email }}">
+                            Email Me Directly
+                        </a>
+                    </div>
+                    <div class="column is-6-desktop is-10-touch">
+                        <a class="button is-medium is-fullwidth" href="https://api.whatsapp.com/send?phone={{ site.author-whatsapp }}">
+                            Text Me On WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spacer for computers. -->
+            <div class="column is-2-desktop desktop-only"></div>
+
+            <!-- Social Media Column -->
+            <div class="column is-5-desktop">
+                <div class="align-text-right">
+                    <h3 class="title is-size-3-desktop is-size-4-mobile">
+                        Follow Me Here
+                    </h3>
+                    <h4 class="subtitle mt-2 mb-5 is-size-5-desktop is-size-6-mobile">
+                        Connect for projects, questions, or just to say hello.
+                    </h4>
+                </div>
+
+                <div class="box">
+                    <div class="columns is-multiline is-justify-content-end">
+                        {% for social in site.data.socials %}
+                            <div class="column is-4-desktop is-6-tablet">
+                                <a class="button is-fullwidth">
+                                    <figure class="image mr-3 is-32x32">
+                                        <img src="{{ social.icon }}" alt="{{ social.name }} Icon">
+                                    </figure>
+                                    {{ social.name }}
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <p class="mt-5 align-text-right">
+                    I'm currently open to freelance projects, part-time gigs, or just a good convo about design and code! Let’s build something cool together.
+                </p>
             </div>
         </div>
     </div>

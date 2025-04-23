@@ -1,11 +1,59 @@
 <footer class="footer">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
-                <p>Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> and <a href="https://bulma.io/" target="_blank">Bulma</a>.</p>
-                <p>Icons by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.</p>
+        <div class="columns has-text-centered-mobile">
+            <!-- Quick Links -->
+            <div class="column is-3">
+                <h3 class="title is-size-5">
+                    Quick Links
+                </h3>
+                {% for link in site.data.footer-links %}
+                    <ul>
+                        <li>
+                            <a href="{{ link.url }}">
+                                {{ link.name }}
+                            </a>
+                        </li>
+                    </ul>
+                {% endfor %}
             </div>
+            
+            <!-- Biography -->
+            <div class="column is-4">
+                <h3 class="title is-size-5">
+                    About My Work
+                </h3>
+                <p class="has-text-weight-medium">
+                    {{ site.author-footer-tagline }}
+                </p>
+                <p class="mt-2 is-size-7">
+                    {{ site.author-footer-about }}
+                </p>
+            </div>
+
+            <!-- Social Media Buttons -->
+            <div class="column is-5">
+                <h3 class="title is-5">
+                    Connect
+                </h3>
+                <div class="buttons">
+                    {% for social in site.data.socials %}
+                        <a href="{{ social.url }}" target="_blank">
+                            <figure class="image is-48x48">
+                                <img src="{{ social.icon }}" alt="{{ social.name }} Icon">
+                            </figure>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="mt-5 has-text-centered">
+            <p>
+                &copy; {{ "now" | date: "%Y" }} | Designed and developed by <strong>{{ site.author }}</strong>
+            </p>
+            <p class="mt-2 is-size-7">
+                Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> and <a href="https://bulma.io/" target="_blank">Bulma</a>
+            </p>
         </div>
     </div>
 </footer>

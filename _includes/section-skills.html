@@ -16,10 +16,10 @@
                     <div class="column is-half">
                         <div class="box">
                             <figure class="image mb-4 is-64x64">
-                                <img src="{{ skill.icon }}" alt="{{ skill.title }} Icon">
+                                <img src="{{ skill.icon }}" alt="{{ skill.name }} Icon">
                             </figure>
                             <h3 class="title mb-2 is-size-4 is-uppercase">
-                                {{ skill.title }}
+                                {{ skill.name }}
                             </h3>
                             <p>
                                 {{ skill.description }}
@@ -30,7 +30,7 @@
             </div>
         {% else %}
             <p>
-                No skills listed!
+                No skills listed yet!
             </p>
         {% endif %}
     </div>
