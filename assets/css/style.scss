@@ -460,13 +460,14 @@ $hr-color-dark: #fff;
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
         }
 
-        .box:nth-of-type(1) // Contact Form
+        // Contact Form
+        .box:nth-of-type(1)
         {
             background-color: #dee2ff;
 
             label
             {
-                color: main.$text-color-light;
+                color: main.$text-color-light; // Main stylesheet failed to catch this element for some reason.
             }
 
             input, textarea
@@ -486,9 +487,26 @@ $hr-color-dark: #fff;
             {
                 resize: none;
             }
+
+            // Submit Button
+            .is-grouped
+            {
+                justify-content: end;
+
+                .button
+                {
+                    width: 150px;
+                }
+
+                @media screen and (max-width: main.$breakpoint-mobile)
+                {
+                    justify-content: center;
+                }
+            }
         }
 
-        .box:nth-of-type(2) // Social Media Buttons
+        // Social Media Buttons
+        .box:nth-of-type(2)
         {
             background-color: #d4f1f9;
 
