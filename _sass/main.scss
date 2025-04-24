@@ -19,6 +19,11 @@ body
     font-family: "Poppins", sans-serif;
     color: $text-color-light;
 
+    input, textarea, ::placeholder
+    {
+        font-family: "Poppins", sans-serif;
+    }
+
     .title, .subtitle
     {
         color: $text-color-light;
@@ -86,11 +91,6 @@ body
             justify-content: center;
         }
     }
-}
-
-input, textarea, ::placeholder
-{
-    font-family: "Poppins", sans-serif;
 }
 
 .navbar
