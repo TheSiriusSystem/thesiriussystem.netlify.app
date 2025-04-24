@@ -7,21 +7,24 @@ title: Page Not Found
     {% include head.html %}
 
     <body>
-        <section class="hero is-fullheight is-dark">
+        {% include navbar.html %}
+
+        <section id="page-404" class="hero is-fullheight has-background-dark">
             <div class="hero-body">
                 <div class="container has-text-centered">
-                    <h1 class="title is-size-1 has-text-danger">
+                    <h1 class="title is-size-1-desktop is-size-2-mobile has-text-light">
                         404
                     </h1>
-                    <p class="subtitle is-size-4">
+                    <h2 class="subtitle mb-5 is-size-4-desktop is-size-5-mobile has-text-light">
                         Oops! The page you're looking for doesn't exist.
-                    </p>
-                    <p class="mb-5">
-                        It seems you've hit a dead end. Let's get you back on track!
-                    </p>
-                    <a href="/" class="button is-link is-medium is-uppercase">
-                        Back to Home
-                    </a>
+                    </h2>
+                    <div class="columns is-centered is-mobile">
+                        <div class="column is-3-desktop is-5-tablet is-10-mobile">
+                            <a class="button is-large is-fullwidth" href="/">
+                                Back To Home
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
