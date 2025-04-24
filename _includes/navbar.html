@@ -84,7 +84,9 @@
 
         navItems.forEach(item => {
             item.classList.remove("is-active");
-            if (item.getAttribute("href") === `#${current}`)
+            const href = item.getAttribute("href");
+            const anchor = href.includes("#") ? href.split("#")[1] : null;
+            if (anchor === current)
             {
                 item.classList.add("is-active");
             }
