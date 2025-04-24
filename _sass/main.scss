@@ -98,6 +98,11 @@ body
     background: linear-gradient(to right, rgba(0, 119, 182, 0.6), rgba(144, 224, 239, 0.6));
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(12px);
+
+    a
+    {
+        color: $text-color-dark;
+    }
 }
 
 .footer
