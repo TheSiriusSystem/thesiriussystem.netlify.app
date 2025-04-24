@@ -2,7 +2,11 @@
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <img src="{{ site.logo }}" alt="{{ site.title }}">
+                {% if site.logo == "" or site.logo == nil %}
+                    <strong>{{ site.title }}</strong>
+                {% else %}
+                    <img src="{{ site.logo }}" alt="{{ site.title }}">
+                {% endif %}
             </a>
 
             <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false" data-target="main-navbar">
