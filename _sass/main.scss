@@ -9,6 +9,38 @@ $text-color-debug: #ffff00;
 @import "/assets/css/flickity.min.css";
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+@mixin better-a()
+{
+    a
+    {
+        position: relative;
+        color: #aec6cf;
+        transition: all 0.3s ease;
+
+        &::after
+        {
+            position: absolute;
+            width: 0px;
+            height: 1px;
+            left: 0px;
+            bottom: -2px;
+            background-color: #b3ebf2;
+            transition: width 0.3s ease;
+            content: "";
+        }
+
+        &:hover
+        {
+            color: #b3ebf2;
+
+            &::after
+            {
+                width: 100%; // Animated underline effect.
+            }
+        }
+    }
+}
+
 html
 {
     scroll-behavior: smooth;
@@ -115,34 +147,7 @@ body
         color: $text-color-dark;
     }
 
-    a
-    {
-        position: relative;
-        color: #aec6cf;
-        transition: all 0.3s ease;
-
-        &::after
-        {
-            position: absolute;
-            width: 0px;
-            height: 1px;
-            left: 0px;
-            bottom: -2px;
-            background-color: #b3ebf2;
-            transition: width 0.3s ease;
-            content: "";
-        }
-
-        &:hover
-        {
-            color: #b3ebf2;
-
-            &::after
-            {
-                width: 100%; // Animated underline effect.
-            }
-        }
-    }
+    @include better-a();
 
     .buttons
     {

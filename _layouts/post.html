@@ -1,0 +1,50 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="en">
+    {% include head.html %}
+
+    <body>
+        {% include navbar.html %}
+
+        <!-- Post Heading -->
+        <section id="post-hero" class="hero is-small">
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns is-centered is-mobile">
+                        <div class="column is-8 has-text-centered-mobile">
+                            <h1 class="title mt-6 is-size-1-desktop is-size-2-mobile">
+                                {{ page.title }}
+                            </h1>
+                            <h2 class="subtitle mt-2 is-size-5-desktop is-size-6-mobile has-text-grey">
+                                {{ page.content | number_of_words | divided_by: 200 }} minute(s) read • {{ page.date | date: "%B %d, %Y" }}
+                            </h2>
+                            <p class="ls-1 is-italic">
+                                {{ page.description }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Post Content -->
+        <section id="post-main" class="section">
+            <div class="container">
+                <div class="columns is-multiline is-centered is-mobile">
+                    <div class="column is-8">
+                        <figure class="image post-image mb-6 is-16by9">
+                            <img src="{{ page.image }}" alt="{{ page.title }}">
+                        </figure>
+                        <div class="content">
+                            {{ content }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% include footer.html %}
+    </body>
+</html>

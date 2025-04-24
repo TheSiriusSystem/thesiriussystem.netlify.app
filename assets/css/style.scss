@@ -535,3 +535,61 @@ $hr-color-dark: #fff;
         }
     }
 }
+
+#blog-hero
+{
+    background-color: #ede7f6;
+}
+
+#blog-main
+{
+    background-color: #f5f7fa;
+
+    .card
+    {
+        height: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        @include flex-column();
+
+        &:hover
+        {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .content
+        {
+            flex-grow: 1.0;
+        }
+    }
+}
+
+#post-hero
+{
+    background-color: #ede7f6;
+}
+
+#post-main
+{
+    background-color: #f5f7fa;
+
+    @include main.better-a();
+
+    .post-image
+    {
+        max-width: 75%;
+        margin: 0 auto;
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(174, 198, 207, 0.4), 0 0 20px rgba(179, 235, 242, 0.3);
+
+        @media screen and (max-width: main.$breakpoint-touch)
+        {
+            max-width: 100%;
+        }
+    }
+}
